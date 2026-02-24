@@ -1,7 +1,5 @@
 public class OOpsBannerApp{
     public static void main(String[] args) {
-	   public class UC3 {
-    public static void main(String[] args) {
 
         String line1 = String.join("   ",
                 " ***** ",
@@ -54,6 +52,4 @@ public class OOpsBannerApp{
         System.out.println(line7);
     }
 }
-
-	}
-}	
+	
