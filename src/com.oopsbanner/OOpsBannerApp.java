@@ -1,6 +1,29 @@
 public class OOpsBannerApp{
     public static void main(String[] args) {
- return new String[]{
+ static class CharacterPatternMap {
+        private char character;
+        private String[] pattern;
+
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        // Create map to store character patterns
+        Map<Character, CharacterPatternMap> patternMap = new HashMap<>();
+
+        patternMap.put('O', new CharacterPatternMap('O', new String[]{
                 " ***** ",
                 "*     *",
                 "*     *",
@@ -8,12 +31,9 @@ public class OOpsBannerApp{
                 "*     *",
                 "*     *",
                 " ***** "
-        };
-    }
+        }));
 
-    // Method to generate letter P
-    public static String[] getP() {
-        return new String[]{
+        patternMap.put('P', new CharacterPatternMap('P', new String[]{
                 " ***** ",
                 "*     *",
                 "*     *",
@@ -21,12 +41,9 @@ public class OOpsBannerApp{
                 "*      ",
                 "*      ",
                 "*      "
-        };
-    }
+        }));
 
-    // Method to generate letter S
-    public static String[] getS() {
-        return new String[]{
+        patternMap.put('S', new CharacterPatternMap('S', new String[]{
                 " ***** ",
                 "*      ",
                 "*      ",
@@ -34,18 +51,18 @@ public class OOpsBannerApp{
                 "      *",
                 "      *",
                 " ***** "
-        };
-    }
+        }));
 
-    public static void main(String[] args) {
-
-        String[] O1 = getO();
-        String[] O2 = getO();
-        String[] P = getP();
-        String[] S = getS();
+        String word = "OOPS";
 
         for (int i = 0; i < 7; i++) {
-            String line = String.join("   ", O1[i], O2[i], P[i], S[i]);
+            StringBuilder line = new StringBuilder();
+
+            for (char ch : word.toCharArray()) {
+                String[] pattern = patternMap.get(ch).getPattern();
+                line.append(pattern[i]).append("   ");
+            }
+
             System.out.println(line);
 		}
        
